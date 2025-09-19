@@ -1,0 +1,1248 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materi Ke-PMII-an dan Kopri</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #1565C0;    /* Biru utama */
+            --secondary: #FFC107;  /* Kuning sebagai aksen */
+            --accent: #2196F3;     /* Biru lebih terang */
+            --light: #E3F2FD;      /* Biru sangat muda */
+            --dark: #0D47A1;       /* Biru tua */
+            --pink: #E91E63;       /* Pink untuk Kopri */
+            --success: #4CAF50;    /* Hijau untuk sukses */
+            --text-dark: #333;     /* Warna teks gelap */
+            --text-light: #757575; /* Warna teks terang */
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(to bottom, #E3F2FD, #BBDEFB);
+            color: var(--text-dark);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--dark) 100%);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+            border-bottom: 5px solid var(--secondary);
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100" opacity="0.05"><text x="50%" y="50%" font-size="20" text-anchor="middle" fill="white">PMII</text></svg>');
+            opacity: 0.1;
+        }
+        
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 1rem;
+            gap: 20px;
+        }
+        
+        .logo {
+            width: 100px;
+            height: 100px;
+            background: var(--secondary);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            font-size: 1.5rem;
+            color: var(--primary);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            border: 3px solid white;
+        }
+        
+        .logo-kopri {
+            width: 100px;
+            height: 100px;
+            background: var(--pink);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            font-size: 1.5rem;
+            color: white;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            border: 3px solid white;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+        }
+        
+        .nav-container {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+            overflow: hidden;
+            border: 2px solid var(--secondary);
+        }
+        
+        .nav-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            list-style: none;
+            background: var(--primary);
+        }
+        
+        .nav-tabs li {
+            flex: 1;
+            min-width: 150px;
+        }
+        
+        .nav-tabs a {
+            display: block;
+            padding: 1rem;
+            color: white;
+            text-decoration: none;
+            text-align: center;
+            transition: all 0.3s;
+            border-bottom: 3px solid transparent;
+            font-weight: 500;
+        }
+        
+        .nav-tabs a:hover, .nav-tabs a.active {
+            background: rgba(255, 255, 255, 0.15);
+            border-bottom: 3px solid var(--secondary);
+        }
+        
+        .nav-tabs a.active {
+            background: var(--dark);
+        }
+        
+        .content-section {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            display: none;
+            border-left: 5px solid var(--primary);
+        }
+        
+        .content-section.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .content-section.kopri {
+            border-left: 5px solid var(--pink);
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        h2 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--light);
+        }
+        
+        h2.kopri {
+            color: var(--pink);
+        }
+        
+        h3 {
+            color: var(--dark);
+            margin: 1.5rem 0 1rem;
+            padding-left: 0.5rem;
+            border-left: 4px solid var(--secondary);
+        }
+        
+        h3.kopri {
+            border-left: 4px solid var(--pink);
+            color: var(--pink);
+        }
+        
+        p {
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+        
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 2rem auto;
+        }
+        
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: var(--primary);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+        }
+        
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: white;
+            border: 4px solid var(--secondary);
+            border-radius: 50%;
+            top: 15px;
+            right: -13px;
+            z-index: 1;
+        }
+        
+        .left {
+            left: 0;
+        }
+        
+        .right {
+            left: 50%;
+        }
+        
+        .right::after {
+            left: -13px;
+        }
+        
+        .timeline-content {
+            padding: 20px;
+            background-color: white;
+            position: relative;
+            border-radius: 6px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-left: 4px solid var(--accent);
+        }
+        
+        .timeline-date {
+            font-weight: bold;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+        
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid #E3F2FD;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .card-header {
+            background: var(--primary);
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            font-weight: bold;
+        }
+        
+        .card-header.kopri {
+            background: var(--pink);
+        }
+        
+        .card-body {
+            padding: 1.5rem;
+        }
+        
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .game-container {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            border: 2px solid var(--secondary);
+        }
+        
+        .quiz-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: left;
+        }
+        
+        .question {
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            border: 1px solid var(--light);
+            border-radius: 8px;
+            background: #FAFAFA;
+        }
+        
+        .options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .option {
+            padding: 1rem;
+            background: var(--light);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s;
+        }
+        
+        .option:hover {
+            background: #BBDEFB;
+            transform: scale(1.02);
+        }
+        
+        .option.selected {
+            background: var(--accent);
+            color: white;
+        }
+        
+        .option.correct {
+            background: var(--success);
+            color: white;
+        }
+        
+        .option.incorrect {
+            background: #F44336;
+            color: white;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background 0.3s, transform 0.2s;
+            margin-top: 1rem;
+            font-weight: 500;
+        }
+        
+        .btn:hover {
+            background: var(--dark);
+            transform: translateY(-2px);
+        }
+        
+        .btn-secondary {
+            background: var(--secondary);
+            color: var(--text-dark);
+        }
+        
+        .btn-secondary:hover {
+            background: #FFA000;
+            color: white;
+        }
+        
+        .btn-kopri {
+            background: var(--pink);
+            color: white;
+        }
+        
+        .btn-kopri:hover {
+            background: #AD1457;
+        }
+        
+        .result {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            border-radius: 10px;
+            background: var(--light);
+            text-align: center;
+            display: none;
+            border: 2px solid var(--primary);
+        }
+        
+        .result.show {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .progress-bar {
+            height: 10px;
+            background: #ddd;
+            border-radius: 5px;
+            margin: 1rem 0;
+            overflow: hidden;
+        }
+        
+        .progress {
+            height: 100%;
+            background: var(--success);
+            width: 0%;
+            transition: width 0.5s;
+        }
+        
+        footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+            border-top: 5px solid var(--secondary);
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-tabs {
+                flex-direction: column;
+            }
+            
+            .timeline::after {
+                left: 31px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-item::after {
+                left: 21px;
+            }
+            
+            .left::after, .right::after {
+                left: 21px;
+            }
+            
+            .right {
+                left: 0;
+            }
+            
+            .options {
+                grid-template-columns: 1fr;
+            }
+            
+            .logo-container {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+        
+        .highlight {
+            background-color: rgba(255, 193, 7, 0.2);
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+        
+        .highlight-kopri {
+            background-color: rgba(233, 30, 99, 0.2);
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+        
+        .quote {
+            border-left: 4px solid var(--secondary);
+            padding-left: 1rem;
+            margin: 1.5rem 0;
+            font-style: italic;
+            color: var(--text-light);
+        }
+        
+        .quote-kopri {
+            border-left: 4px solid var(--pink);
+        }
+        
+        .color-bar {
+            height: 8px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            border-radius: 4px;
+            margin: 1rem 0;
+        }
+        
+        .color-bar-kopri {
+            background: linear-gradient(to right, var(--pink), #F48FB1);
+        }
+        
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+        }
+        
+        .comparison-table th, .comparison-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .comparison-table th {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .comparison-table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        
+        .comparison-table tr:hover {
+            background-color: #e3f2fd;
+        }
+        
+        /* Leaderboard Styles */
+        .leaderboard-section {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            border-left: 5px solid var(--secondary);
+        }
+        
+        .leaderboard-title {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 1.5rem;
+        }
+        
+        .leaderboard-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+        }
+        
+        .leaderboard-table th, .leaderboard-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .leaderboard-table th {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .leaderboard-table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        
+        .leaderboard-table tr:hover {
+            background-color: #e3f2fd;
+        }
+        
+        .leaderboard-table .rank {
+            font-weight: bold;
+            text-align: center;
+            width: 60px;
+        }
+        
+        .leaderboard-table .score {
+            text-align: center;
+            width: 80px;
+        }
+        
+        .leaderboard-table .time {
+            text-align: center;
+            width: 140px;
+        }
+        
+        .leaderboard-table .medal {
+            text-align: center;
+            width: 40px;
+        }
+        
+        .gold {
+            color: gold;
+            font-size: 1.2rem;
+        }
+        
+        .silver {
+            color: silver;
+            font-size: 1.2rem;
+        }
+        
+        .bronze {
+            color: #cd7f32;
+            font-size: 1.2rem;
+        }
+        
+        .user-form {
+            margin: 1rem 0;
+            padding: 1rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .user-form input {
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            width: 100%;
+            margin-bottom: 1rem;
+        }
+        
+        .refresh-btn {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 1rem;
+            display: block;
+            margin-left: auto;
+        }
+        
+        .refresh-btn:hover {
+            background: var(--dark);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <div class="logo">PMII</div>
+            <div class="logo-kopri">KOPRI</div>
+        </div>
+        <h1>Materi Ke-PMII-an dan Kopri</h1>
+        <p class="subtitle">Media Pembelajaran Masa Penerimaan Anggota Baru PMII dan Kopri - Sejarah, Nilai, dan Tokoh</p>
+    </header>
+
+    <div class="container">
+        <!-- Leaderboard Section -->
+        <div class="leaderboard-section">
+            <div class="leaderboard-title">
+                <i class="fas fa-trophy gold"></i>
+                <h2>Leaderboard Kuis PMII & Kopri</h2>
+                <i class="fas fa-trophy gold"></i>
+            </div>
+            <p>Berikut adalah peringkat peserta berdasarkan skor kuis tertinggi dan waktu penyelesaian tercepat:</p>
+            
+            <table class="leaderboard-table">
+                <thead>
+                    <tr>
+                        <th class="rank">Peringkat</th>
+                        <th class="medal">Medali</th>
+                        <th>Nama</th>
+                        <th class="score">Skor</th>
+                        <th class="time">Waktu</th>
+                    </tr>
+                </thead>
+                <tbody id="leaderboard-body">
+                    <!-- Data leaderboard akan diisi oleh JavaScript -->
+                </tbody>
+            </table>
+            
+            <button class="refresh-btn" id="refresh-leaderboard">
+                <i class="fas fa-sync-alt"></i> Refresh Leaderboard
+            </button>
+        </div>
+
+        <div class="nav-container">
+            <ul class="nav-tabs">
+                <li><a href="#pendahuluan" class="nav-link active">Pendahuluan</a></li>
+                <li><a href="#sejarah" class="nav-link">Sejarah</a></li>
+                <li><a href="#nilai" class="nav-link">Nilai Dasar</a></li>
+                <li><a href="#tokoh" class="nav-link">Tokoh</a></li>
+                <li><a href="#kopri" class="nav-link">Tentang Kopri</a></li>
+                <li><a href="#game" class="nav-link">Kuis</a></li>
+            </ul>
+        </div>
+
+        <div id="pendahuluan" class="content-section active">
+            <h2>Pendahuluan: Apa itu "Ke-PMII-an"?</h2>
+            <div class="color-bar"></div>
+            <p>"Ke-PMII-an" adalah suatu totalitas nilai, ideologi, karakter, tradisi, dan perilaku kader yang membentuk identitas khusus sebagai seorang anggota PMII. Memahami Ke-PMII-an berarti memahami <span class="highlight">jatidiri, sejarah, nilai-nilai dasar, dan cara bergerak</span> organisasi ini dalam menjawab tantangan zamannya.</p>
+            
+            <div class="quote">
+                "PMII lahir dari rahim Nahdlatul Ulama (NU) tetapi merupakan organisasi yang independen."
+            </div>
+            
+            <h3>Latar Belakang Berdirinya PMII (17 April 1960)</h3>
+            <p>PMII lahir dari rahim Nahdlatul Ulama (NU) tetapi merupakan organisasi yang <strong>independen</strong>. Kelahirannya didorong oleh beberapa faktor:</p>
+            
+            <div class="card-container">
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fas fa-users"></i> Kebutuhan Kaderisasi
+                    </div>
+                    <div class="card-body">
+                        <p>NU membutuhkan wadah kaderisasi pemuda yang lebih terstruktur.</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fas fa-balance-scale"></i> Dinamika Politik
+                    </div>
+                    <div class="card-body">
+                        <p>Situasi politik nasional yang memanas, termasuk tarik-ulur dengan IPMI yang dianggap terlalu dekat dengan kekuatan politik tertentu.</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fas fa-flag"></i> Semangat Independensi
+                    </div>
+                    <div class="card-body">
+                        <p>Keinginan kuat para mahasiswa NU untuk memiliki organisasi yang mandiri, bebas menentukan kebijakan, dan fokus pada pengembangan intelektual-progresif.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="sejarah" class="content-section">
+            <h2>Sejarah Perkembangan PMII</h2>
+            <div class="color-bar"></div>
+            <p>Berikut adalah garis waktu perkembangan PMII dari masa ke masa melalui Musyawarah Pimpinan Nasional (MUSPIMNAS):</p>
+            
+            <div class="timeline">
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <div class="timeline-date">1961 - MUSPIMNAS I</div>
+                        <p>Di Tawangmangu, fokus pada konsolidasi organisasi yang masih bayi. Menetapkan AD/ART, struktur, dan simbol-simbol organisasi.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <div class="timeline-date">1963 - MUSPIMNAS II</div>
+                        <p>Di Kaliurang, fokus pada penguatan basis dan peran PMII dalam percaturan nasional.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <div class="timeline-date">1966 - MUSPIMNAS III</div>
+                        <p>Di Surabaya, PMII terlibat aktif dalam gerakan menumbangkan Orde Lama.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <div class="timeline-date">1969 - MUSPIMNAS IV</div>
+                        <p>Di Malang, awal dari sikap kritis PMII terhadap Orde Baru.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <div class="timeline-date">1972 - MUSPIMNAS V</div>
+                        <p>Di Palembang, melahirkan Deklarasi Palembang yang menyatakan "Keluar dari NU".</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="nilai" class="content-section">
+            <h2>Nilai-Nilai Dasar Ke-PMII-an</h2>
+            <div class="color-bar"></div>
+            <p>Dari perjalanan panjang tersebut, dapat disimpulkan karakter dan nilai-nilai dasar Ke-PMII-an:</p>
+            
+            <div class="card-container">
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fas fa-star"></i> Independen
+                    </div>
+                    <div class="card-body">
+                        <p>Berdikari dalam berpikir dan bertindak, tidak mudah dikooptasi oleh kekuatan mana pun.</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fas fa-chart-line"></i> Progresif
+                    </div>
+                    <div class="card-body">
+                        <p>Selalu memiliki cara pandang ke depan, dinamis, dan ingin melakukan perubahan ke arah yang lebih baik.</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fas fa-brain"></i> Kritis
+                    </div>
+                    <div class="card-body">
+                        <p>Tidak menerima sesuatu begitu saja, selalu menggunakan nalar untuk menganalisis setiap persoalan.</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fas fa-hands-helping"></i> Transformative
+                    </div>
+                    <div class="card-body">
+                        <p>Tidak hanya berwacana, tetapi turun langsung memberdayakan masyarakat untuk mengubah kondisi mereka.</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fas fa-peace"></i> Aswaja An-Nahdliyah
+                    </div>
+                    <div class="card-body">
+                        <p>Moderasi (tawassuth), keseimbangan (tawazun), toleransi (tasamuh), dan keadilan (i'tidal) menjadi prinsip dalam bersikap.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="tokoh" class="content-section">
+            <h2>Tokoh-Tokoh Terkemuka PMII</h2>
+            <div class="color-bar"></div>
+            <p>Para tokoh ini adalah representasi dari jiwa zamannya masing-masing. Mereka adalah produk sekaligus penggerak dinamika PMII.</p>
+            
+            <div class="card-container">
+                <div class="card">
+                    <div class="card-header">Mahbub Djunaidi</div>
+                    <div class="card-body">
+                        <p>Simbol intelektual, jurnalisme, dan kecerdasan yang kritis namun santun. Salah satu founding father PMII.</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">Abdurrahman Wahid (Gus Dur)</div>
+                    <div class="card-body">
+                        <p>Guru Bangsa dan ideolog utama yang mempengaruhi jalan pikiran PMII dengan pemikiran pluralis dan inklusif.</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">Emha Ainun Nadjib (Cak Nun)</div>
+                    <div class="card-body">
+                        <p>Simbol aktivisme budaya dan spiritual. Gerakan Masyarakatakat Pohon Bambu dan berbagai pertunjukan Sinau Bareng.</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">Utomo Dananjaya</div>
+                    <div class="card-body">
+                        <p>Pemikir dan aktivis demokrasi dan HAM yang sangat dihormati. Membawa wacana HAM и civil society ke dalam diskursus PMII.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="kopri" class="content-section kopri">
+            <h2 class="kopri">Tentang Korps PMII Putri (KOPRI)</h2>
+            <div class="color-bar color-bar-kopri"></div>
+            <p>Kopri (Korps Pergerakan Mahasiswa Islam Indonesia Putri) adalah organisasi otonom di bawah PMII yang fokus pada pemberdayaan perempuan dan isu-isu kesetaraan gender.</p>
+            
+            <div class="quote quote-kopri">
+                "Kopri hadir sebagai wadah bagi kader perempuan PMII untuk mengembangkan potensi dan memperjuangkan hak-hak perempuan."
+            </div>
+            
+            <h3 class="kopri">Sejarah Berdirinya Kopri</h3>
+            <p>Kopri didirikan pada tanggal <span class="highlight-kopri">14 November 1972</span> di Malang, Jawa Timur. Kelahiran Kopri dilatarbelakangi oleh:</p>
+            
+            <div class="card-container">
+                <div class="card">
+                    <div class="card-header kopri">
+                        <i class="fas fa-venus"></i> Pemberdayaan Perempuan
+                    </div>
+                    <div class="card-body">
+                        <p>Kebutuhan akan wadah khusus untuk memberdayakan kader perempuan dalam PMII.</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header kopri">
+                        <i class="fas fa-balance-scale"></i> Kesetaraan Gender
+                    </div>
+                    <div class="card-body">
+                        <p>Upaya untuk memperjuangkan kesetaraan gender baik dalam organisasi maupun masyarakat.</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header kopri">
+                        <i class="fas fa-graduation-cap"></i> Pengembangan Potensi
+                    </div>
+                    <div class="card-body">
+                        <p>Wadah untuk mengembangkan potensi dan kapasitas kader perempuan PMII.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <h3 class="kopri">Visi dan Misi Kopri</h3>
+            <p><strong>Visi Kopri:</strong> Mewujudkan kader perempuan yang mandiri, progresif, dan berkeadilan gender.</p>
+            <p><strong>Misi Kopri:</strong></p>
+            <ul>
+                <li>Mengembangkan pendidikan dan kaderisasi perempuan</li>
+                <li>Memperjuangkan hak-hak perempuan и kesetaraan gender</li>
+                <li>Membangun jaringan dan solidaritas perempuan</li>
+                <li>Mendorong partisipasi perempuan dalam berbagai bidang</li>
+            </ul>
+            
+            <h3 class="kopri">Perbedaan PMII dan Kopri</h3>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Aspek</th>
+                        <th>PMII</th>
+                        <th>Kopri</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Keanggotaan</td>
+                        <td>Terbuka untuk semua gender</td>
+                        <td>Khusus perempuan</td>
+                    </tr>
+                    <tr>
+                        <td>Fokus Isu</td>
+                        <td>Umum (pluralisme, keadilan, dll)</td>
+                        <td>Perempuan dan kesetaraan gender</td>
+                    </tr>
+                    <tr>
+                        <td>Bentuk Organisasi</td>
+                        <td>Organisasi induk</td>
+                        <td>Organisasi otonom</td>
+                    </tr>
+                    <tr>
+                        <td>Pendekatan</td>
+                        <td>General</td>
+                        <td>Spesifik gender</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div style="text-align: center; margin-top: 2rem;">
+                <button class="btn btn-kopri">Pelajari Lebih Lanjut tentang Kopri</button>
+            </div>
+        </div>
+
+        <div id="game" class="content-section">
+            <div class="game-container">
+                <h2>Kuis Pengetahuan Ke-PMII-an dan Kopri</h2>
+                <div class="color-bar"></div>
+                <p>Uji pemahaman Anda tentang materi Ke-PMII-an dan Kopri dengan kuis berikut. Jawablah semua pertanyaan dengan memilih opsi yang benar!</p>
+                
+                <div class="user-form">
+                    <h3>Masukkan Nama Anda</h3>
+                    <input type="text" id="player-name" placeholder="Nama Anda">
+                </div>
+                
+                <div class="quiz-container">
+                    <div class="question">
+                        <h3>1. Kapan PMII didirikan?</h3>
+                        <div class="options">
+                            <div class="option" data-correct="true">17 April 1960</div>
+                            <div class="option">17 April 1950</div>
+                            <div class="option">20 Mei 1960</div>
+                            <div class="option">28 Oktober 1928</div>
+                        </div>
+                    </div>
+                    
+                    <div class="question">
+                        <h3>2. Kapan Kopri didirikan?</h3>
+                        <div class="options">
+                            <div class="option">14 November 1970</div>
+                            <div class="option" data-correct="true">14 November 1972</div>
+                            <div class="option">14 November 1975</div>
+                            <div class="option">14 November 1980</div>
+                        </div>
+                    </div>
+                    
+                    <div class="question">
+                        <h3>3. Siapa yang dikenal sebagai "Guru Bangsa" dan mempengaruhi pemikiran PMII?</h3>
+                        <div class="options">
+                            <div class="option">Mahbub Djunaidi</div>
+                            <div class="option">Emha Ainun Nadjib</div>
+                            <div class="option" data-correct="true">Abdurrahman Wahid</div>
+                            <div class="option">Muhaimin Iskandar</div>
+                        </div>
+                    </div>
+                    
+                    <div class="question">
+                        <h3>4. Apa fokus utama perjuangan Kopri?</h3>
+                        <div class="options">
+                            <div class="option">Lingkungan hidup</div>
+                            <div class="option">Pendidikan anak</div>
+                            <div class="option" data-correct="true">Kesetaraan gender</div>
+                            <div class="option">Ekonomi kerakyatan</div>
+                        </div>
+                    </div>
+                    
+                    <button class="btn" id="submit-quiz">Submit Jawaban</button>
+                    
+                    <div class="result" id="quiz-result">
+                        <h3>Hasil Kuis</h3>
+                        <p>Skor Anda: <span id="score">0</span> dari 4</p>
+                        <div class="progress-bar">
+                            <div class="progress" id="score-progress"></div>
+                        </div>
+                        <p id="result-message"></p>
+                        <button class="btn btn-secondary" id="retry-quiz">Coba Lagi</button>
+                        <button class="btn btn-kopri" id="view-leaderboard">Lihat Leaderboard</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <p>© 2023 Materi Interaktif Ke-PMII-an dan Kopri - Untuk Media Pembelajaran MAPABA PMII</p>
+            <p>Website ini dapat di-deploy ke GitHub Pages untuk keperluan edukasi</p>
+        </div>
+    </footer>
+
+    <script>
+        // Navigation functionality
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Remove active class from all links and sections
+                document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+                document.querySelectorAll('.content-section').forEach(s => s.classList.remove('active'));
+                
+                // Add active class to clicked link
+                this.classList.add('active');
+                
+                // Show corresponding section
+                const targetId = this.getAttribute('href').substring(1);
+                document.getElementById(targetId).classList.add('active');
+            });
+        });
+        
+        // Quiz functionality
+        document.getElementById('submit-quiz').addEventListener('click', function() {
+            const playerName = document.getElementById('player-name').value.trim();
+            if (playerName === '') {
+                alert('Silakan masukkan nama Anda terlebih dahulu!');
+                return;
+            }
+            
+            let score = 0;
+            const questions = document.querySelectorAll('.question');
+            
+            questions.forEach(question => {
+                const options = question.querySelectorAll('.option');
+                let answered = false;
+                let correct = false;
+                
+                options.forEach(option => {
+                    if (option.classList.contains('selected')) {
+                        answered = true;
+                        if (option.getAttribute('data-correct') === 'true') {
+                            correct = true;
+                            score++;
+                        }
+                    }
+                    
+                    // Show correct answers
+                    if (option.getAttribute('data-correct') === 'true') {
+                        option.classList.add('correct');
+                    } else if (option.classList.contains('selected')) {
+                        option.classList.add('incorrect');
+                    }
+                });
+                
+                if (!answered) {
+                    options.forEach(option => {
+                        if (option.getAttribute('data-correct') === 'true') {
+                            option.classList.add('correct');
+                        }
+                    });
+                }
+            });
+            
+            // Save score to localStorage
+            const playerData = {
+                name: playerName,
+                score: score,
+                time: new Date().toLocaleString('id-ID')
+            };
+            
+            let leaderboard = JSON.parse(localStorage.getItem('pmiiLeaderboard')) || [];
+            leaderboard.push(playerData);
+            
+            // Sort by score (descending) and then by time (ascending)
+            leaderboard.sort((a, b) => {
+                if (b.score !== a.score) {
+                    return b.score - a.score;
+                }
+                // If scores are equal, sort by time (earlier time is better)
+                return new Date(a.time) - new Date(b.time);
+            });
+            
+            // Keep only top 10 scores
+            if (leaderboard.length > 10) {
+                leaderboard = leaderboard.slice(0, 10);
+            }
+            
+            localStorage.setItem('pmiiLeaderboard', JSON.stringify(leaderboard));
+            
+            // Show result
+            const resultElement = document.getElementById('quiz-result');
+            const scoreElement = document.getElementById('score');
+            const progressElement = document.getElementById('score-progress');
+            const messageElement = document.getElementById('result-message');
+            
+            scoreElement.textContent = score;
+            progressElement.style.width = (score / 4 * 100) + '%';
+            
+            if (score === 4) {
+                messageElement.textContent = 'Luar biasa! Anda menguasai materi Ke-PMII-an dan Kopri dengan sangat baik.';
+            } else if (score >= 2) {
+                messageElement.textContent = 'Bagus! Pemahaman Anda tentang Ke-PMII-an dan Kopri sudah cukup baik.';
+            } else {
+                messageElement.textContent = 'Yuk, pelajari lagi materi Ke-PMII-an dan Kopri untuk pemahaman yang lebih baik.';
+            }
+            
+            resultElement.classList.add('show');
+            
+            // Update leaderboard
+            updateLeaderboard();
+        });
+        
+        // Option selection
+        document.querySelectorAll('.option').forEach(option => {
+            option.addEventListener('click', function() {
+                // Remove any previous selection in this question
+                const parentQuestion = this.closest('.question');
+                parentQuestion.querySelectorAll('.option').forEach(opt => {
+                    opt.classList.remove('selected');
+                });
+                
+                // Select this option
+                this.classList.add('selected');
+            });
+        });
+        
+        // Retry quiz
+        document.getElementById('retry-quiz').addEventListener('click', function() {
+            // Reset all options
+            document.querySelectorAll('.option').forEach(option => {
+                option.classList.remove('selected', 'correct', 'incorrect');
+            });
+            
+            // Hide result
+            document.getElementById('quiz-result').classList.remove('show');
+        });
+        
+        // View leaderboard
+        document.getElementById('view-leaderboard').addEventListener('click', function() {
+            // Scroll to leaderboard section
+            document.querySelector('.leaderboard-section').scrollIntoView({ behavior: 'smooth' });
+            
+            // Update leaderboard
+            updateLeaderboard();
+        });
+        
+        // Refresh leaderboard
+        document.getElementById('refresh-leaderboard').addEventListener('click', function() {
+            updateLeaderboard();
+        });
+        
+        // Function to update leaderboard
+        function updateLeaderboard() {
+            const leaderboard = JSON.parse(localStorage.getItem('pmiiLeaderboard')) || [];
+            const leaderboardBody = document.getElementById('leaderboard-body');
+            
+            leaderboardBody.innerHTML = '';
+            
+            if (leaderboard.length === 0) {
+                leaderboardBody.innerHTML = '<tr><td colspan="5" style="text-align: center;">Belum ada data leaderboard. Jadilah yang pertama!</td></tr>';
+                return;
+            }
+            
+            leaderboard.forEach((player, index) => {
+                const row = document.createElement('tr');
+                
+                // Add medal based on rank
+                let medal = '';
+                if (index === 0) {
+                    medal = '<i class="fas fa-trophy gold"></i>';
+                } else if (index === 1) {
+                    medal = '<i class="fas fa-trophy silver"></i>';
+                } else if (index === 2) {
+                    medal = '<i class="fas fa-trophy bronze"></i>';
+                }
+                
+                row.innerHTML = `
+                    <td class="rank">${index + 1}</td>
+                    <td class="medal">${medal}</td>
+                    <td>${player.name}</td>
+                    <td class="score">${player.score}/4</td>
+                    <td class="time">${player.time}</td>
+                `;
+                
+                leaderboardBody.appendChild(row);
+            });
+        }
+        
+        // Initialize leaderboard on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            updateLeaderboard();
+        });
+    </script>
+</body>
+</html>
